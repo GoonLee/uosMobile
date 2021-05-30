@@ -3,57 +3,25 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="285dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="31dp"
-        android:background="#FFFFFF">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/BookList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:layout_width="285dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_marginStart="63dp"-->
+<!--        android:layout_marginLeft="63dp"-->
+<!--        android:layout_marginTop="31dp"-->
+<!--        android:background="#FFFFFF">-->
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="book test1" />
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="285dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="31dp"
-        android:background="#FFFFFF">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="book test2" />
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="285dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="31dp"
-        android:background="#FFFFFF">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="book test3" />
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="285dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="31dp"
-        android:background="#FFFFFF">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="book test4" />
-    </com.google.android.material.card.MaterialCardView>
-
+            android:id="@+id/Books"
+            android:layout_width="285dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="31dp"/>
+<!--    </com.google.android.material.card.MaterialCardView>-->
 </LinearLayout>
