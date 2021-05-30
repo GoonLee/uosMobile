@@ -25,7 +25,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
         public ViewHolder(View view) {
             super(view);
 
-            textView = (TextView) view.findViewById(R.id.Books);
+            textView = (TextView) view.findViewById(R.id.book);
         }
 
         public TextView getTextView() {
@@ -37,7 +37,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     @Override
     public BookAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment0, parent, false);
+                .inflate(R.layout.books, parent, false);
 
         return new ViewHolder(view);
     }

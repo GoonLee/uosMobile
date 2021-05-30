@@ -30,6 +30,7 @@ public class Fragment0 extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.scrollToPosition(0);
         bookAdapter = new BookAdapter(bookList);
+        recyclerView.setAdapter(bookAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         return view;
     }
@@ -42,5 +43,14 @@ public class Fragment0 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        initDataset();
+    }
+
+    private void initDataset(){
+        //for Test
+        bookList = new ArrayList<BookData>();
+        bookList.add(new BookData("개구리 소년"));
+        bookList.add(new BookData("신데렐라"));
+        bookList.add(new BookData("촉법소년"));
     }
 }

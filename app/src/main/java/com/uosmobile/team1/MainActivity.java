@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DBHelper helper;
+        SQLiteDatabase db;
+        helper = new DBHelper(MainActivity.this, "testdb.db", null, 1);
+        db = helper.getWritableDatabase();
+        helper.onCreate(db);
 
         fragment0 = new Fragment0();
         fragment1 = new Fragment1();
