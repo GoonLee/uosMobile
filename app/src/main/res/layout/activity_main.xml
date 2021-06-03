@@ -44,11 +44,26 @@
                 android:text="다운된 책" />
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.card.MaterialCardView>
+
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/BookContainer">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mainBottomNavigationView"
+        android:layout_below="@id/BookContainer"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"></FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mainBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="0dp"
+        android:background="@android:color/background_light"
+        app:menu="@menu/menu_bottom" />
 </RelativeLayout>
 

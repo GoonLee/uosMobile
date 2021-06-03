@@ -14,6 +14,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.uosmobile.team1.BookAdapter;
+import com.uosmobile.team1.BookData;
+import com.uosmobile.team1.R;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -23,14 +27,12 @@ public class Fragment0 extends Fragment {
     private BookAdapter bookAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private String ext = Environment.getExternalStorageState();
-    private String sdPath;
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment0, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.BookList);
+
+        recyclerView = view.findViewById(R.id.BookList);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.scrollToPosition(0);
@@ -48,41 +50,14 @@ public class Fragment0 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        load();
+        initDataset();
     }
 
     private void initDataset(){
         //for Test
         bookList = new ArrayList<BookData>();
-        bookList.add(new BookData("개구리 소년"));
+        bookList.add(new BookData("콩쥐팥쥐"));
         bookList.add(new BookData("신데렐라"));
         bookList.add(new BookData("촉법소년"));
-    }
-
-    public void load(){
-        bookList = new ArrayList<BookData>();
-        String sdPath;
-        String title;
-        String ext = Environment.getExternalStorageState();
-        if(ext.equals(Environment.MEDIA_MOUNTED)){
-            sdPath = Environment.getExternalStoragePublicDirectory("Download").getAbsolutePath();
-            Log.d("dd",sdPath);
-        } else {
-            sdPath = Environment.MEDIA_UNMOUNTED;
-        }
-        try {
-            File bookTitle = new File(sdPath, "Contents");
-
-            Log.d("file", bookTitle.getAbsolutePath());
-
-            for (File f : bookTitle.listFiles()) {
-                if (f.isFile()) {
-                    title = f.getName();
-                    bookList.add(new BookData(title));
-                }
-            }
-        } catch (Exception e) {
-            Log.i("에러: ", e.getMessage());
-        }
     }
 }

@@ -1,65 +1,53 @@
 package com.uosmobile.team1;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.uosmobile.team1.DB.DBHelper;
 import com.uosmobile.team1.support.PermissionSupport;
 
-public class MainActivity extends AppCompatActivity {
+public class ShowContentsActivity extends AppCompatActivity {
 
-    //프래그먼트
-    Fragment fragment0, fragment1;
-    
     //권한
     PermissionSupport permission;
     
+    //액티비티 변수
+    String contentsName;
+
+    //프래그먼트 생성
+    static ContentsTextFragment contentsTextFragment= new ContentsTextFragment();
+    static ContentsDrawingFragment contentsDrawingFragment= new ContentsDrawingFragment();
+
     //바텀 네비게이션
     BottomNavigationView bottomNavigationView;
-
-    //DB
-    DBHelper dbHelper;
-    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_show_contents);
 
-        //프래그먼트 생성
-        fragment0 = new Fragment0();
-        fragment1 = new Fragment1();
+        //메인에서 넘어온 컨텐츠 이름 받기
+        Intent intent = getIntent();
+        contentsName = intent.getStringExtra("contentsName");
+        Bundle bundle = new Bundle();
+        bundle.putString("contentsName", contentsName);
+        contentsTextFragment.setArguments(bundle);
 
-        //DB함수 실행
-        dbHelper = new DBHelper(getApplicationContext());
-        db = dbHelper.getWritableDatabase();
-        dbHelper.onUpgrade(db, 0, 1);
-        dbHelper.insertContentsInformation("개구리 왕자", 18);
-        
         //바텀 네비게이션
-        bottomNavigationView = findViewById(R.id.mainBottomNavigationView);
+        bottomNavigationView = findViewById(R.id.contentsBottomNavigationView);
 
         //상단탭 리스너 설정
-        TabLayout tabs = findViewById(R.id.BookList);
-        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        TabLayout tabLayout = findViewById(R.id.ShowContentsTabLayout);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                Fragment selected = null;
-                if(position == 0){
-                    selected = fragment0;
-                } else if (position == 1){
-                    selected = fragment1;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, selected).commit();
+                changeFragment(tab.getPosition());
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {            }
@@ -73,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.goToContents:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();
                         break;
                     case R.id.goToStamps:
                         break;
@@ -85,7 +76,18 @@ public class MainActivity extends AppCompatActivity {
         permissionCheck();
 
         //텍스트 프래그먼트 우선 배치
-        getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment0).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.ContentsContainer, contentsTextFragment).commit();
+    }
+
+    private void changeFragment(int pos) {//프래그먼트 교체
+        if(pos ==0){
+            Bundle bundle = new Bundle();
+            bundle.putString("contentsName", contentsName);
+            contentsTextFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.ContentsContainer, contentsTextFragment).commit();
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.ContentsContainer, contentsDrawingFragment).commit();
+        }
     }
 
     private void permissionCheck(){
