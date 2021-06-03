@@ -62,6 +62,7 @@ public class ShowContentsActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.goToContents:
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                         break;
