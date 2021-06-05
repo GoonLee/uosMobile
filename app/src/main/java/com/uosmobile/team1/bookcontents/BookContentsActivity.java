@@ -51,7 +51,7 @@ public class BookContentsActivity extends AppCompatActivity implements DrawingFr
             }
         });
 
-        MetaAndCachedDBManager manager = new MetaAndCachedDBManager(new DBHelper(this, Constant.NAME_DB, null, 1));
+        MetaAndCachedDBManager manager = new MetaAndCachedDBManager(new DBHelper(this, Constant.NAME_DB, null, Constant.VERSION_DB));
         manager.insertDataIfNotExists(bookTitle, getTotalPageFromFile(bookTitle));
 
         textFragment.setArguments(fragmentArgument);

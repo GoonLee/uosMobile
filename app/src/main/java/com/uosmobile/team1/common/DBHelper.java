@@ -26,6 +26,9 @@ public class DBHelper extends SQLiteOpenHelper {
             Constant.NAME_COLUMN_BACKGROUND_TOGGLED_OF_IMAGE + " INTEGER, " +
             "PRIMARY KEY (" + Constant.NAME_COLUMN_BOOK_TITLE_OF_IMAGE + ", " + Constant.NAME_COLUMN_PAGE_OF_IMAGE + ") );";
 
+    private static final String QUERY_DROP_META_AND_CACHED_DATA_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_META_AND_CACHED_DATA;
+    private static final String QUERY_DROP_IMAGE_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_IMAGE;
+
     public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -47,6 +50,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL(QUERY_DROP_META_AND_CACHED_DATA_TABLE_IF_EXISTS);
+        sqLiteDatabase.execSQL(QUERY_DROP_IMAGE_TABLE_IF_EXISTS);
+        onCreate(sqLiteDatabase);
     }
 }

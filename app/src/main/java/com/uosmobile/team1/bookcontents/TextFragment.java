@@ -35,7 +35,7 @@ public class TextFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        manager = new MetaAndCachedDBManager(new DBHelper(context, Constant.NAME_DB, null, 1));
+        manager = new MetaAndCachedDBManager(new DBHelper(context, Constant.NAME_DB, null, Constant.VERSION_DB));
         if(context instanceof DrawingFragment.DrawingFragmentResultListener){
             fragmentResultListener = (TextFragmentResultListener) context;
         } else{
@@ -77,7 +77,7 @@ public class TextFragment extends Fragment {
                 --page;
                 pageMoved = true;
                 if(page == 1) contentsTextPrevButton.setVisibility(View.INVISIBLE);
-                else if (page == contentsTotalPage - 1){
+                if (page == contentsTotalPage - 1){
                     contentsTextNextButton.setVisibility(View.VISIBLE);
                     goToQuizButton.setVisibility(View.GONE);
                 }
@@ -96,7 +96,7 @@ public class TextFragment extends Fragment {
                     contentsTextNextButton.setVisibility(View.INVISIBLE);
                     goToQuizButton.setVisibility(View.VISIBLE);
                 }
-                else if(page == 2){
+                if(page == 2){
                     contentsTextPrevButton.setVisibility(View.VISIBLE);
                 }
                 contentsTextTextView.setText(getTextFromFile(page));
@@ -105,7 +105,8 @@ public class TextFragment extends Fragment {
         });
 
         if(page == 1) contentsTextPrevButton.setVisibility(View.INVISIBLE);
-        else if(page == contentsTotalPage){
+
+        if(page == contentsTotalPage){
             contentsTextNextButton.setVisibility(View.INVISIBLE);
             goToQuizButton.setVisibility(View.VISIBLE);
         }
