@@ -14,10 +14,10 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/book"
+            android:id="@+id/book_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="test_Text"
+            android:text="placeholder"
             android:textSize="15dp"
             android:textColor="@color/black"
             />

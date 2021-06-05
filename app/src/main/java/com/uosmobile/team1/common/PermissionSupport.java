@@ -1,4 +1,4 @@
-package com.uosmobile.team1.support;
+package com.uosmobile.team1.common;
 
 import android.Manifest;
 import android.app.Activity;

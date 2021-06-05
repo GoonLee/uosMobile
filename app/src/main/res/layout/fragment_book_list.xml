@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/google_pixe"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/google_pixe">
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/BookContainer"
+            android:layout_width="285dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="63dp"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="31dp"
+            app:cardCornerRadius="20dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="2dp">
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/BookList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="#5B3E96"
+                app:tabIndicatorGravity="stretch"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabTextColor="@color/black">
+
+            <com.google.android.material.tabs.TabItem
+                    android:id="@+id/AllBooks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="다운로드 가능 책" />
+
+            <com.google.android.material.tabs.TabItem
+                    android:id="@+id/DownloadedBooks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="다운로드된 책" />
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mainBottomNavigationView"
+            android:layout_below="@id/BookContainer"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"/>
+</RelativeLayout>
+
