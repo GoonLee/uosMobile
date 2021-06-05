@@ -11,10 +11,10 @@ import androidx.annotation.RequiresApi;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String QUERY_CREATE_META_AND_CACHED_DATA_TABLE = "create table if not exists " +
-            Constant.NAME_TABLE_META_AND_CACHED_DATA + "(" +
-            Constant.NAME_COLUMN_BOOK_TITLE_OF_META_AND_CACHED_DATA + " TEXT primary key, " +
-            Constant.NAME_COLUMN_LAST_PAGE_OF_META_AND_CACHED_DATA + " INTEGER, " +
-            Constant.NAME_COLUMN_TOTAL_PAGE_OF_META_AND_CACHED_DATA + " INTEGER);";
+            Constant.NAME_TABLE_PAGE_INFO + "(" +
+            Constant.NAME_COLUMN_BOOK_TITLE_OF_PAGE_INFO + " TEXT primary key, " +
+            Constant.NAME_COLUMN_LAST_PAGE_OF_PAGE_INFO + " INTEGER, " +
+            Constant.NAME_COLUMN_TOTAL_PAGE_OF_PAGE_INFO + " INTEGER);";
 
     private static final String QUERY_CREATE_IMAGE_TABLE = "create table if not exists " +
             Constant.NAME_TABLE_IMAGE + " (" +
@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Constant.NAME_COLUMN_EARN_DATETIME_OF_STAMP + " DATETIME default (datetime('now', 'localtime')), " +
             "PRIMARY KEY (" + Constant.NAME_COLUMN_BOOK_TITLE_OF_STAMP + ", " + Constant.NAME_COLUMN_ACHIEVEMENT_CODE_OF_STAMP + ") );";
 
-    private static final String QUERY_DROP_META_AND_CACHED_DATA_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_META_AND_CACHED_DATA;
+    private static final String QUERY_DROP_META_AND_CACHED_DATA_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_PAGE_INFO;
     private static final String QUERY_DROP_IMAGE_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_IMAGE;
     private static final String QUERY_DROP_STAMP_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_STAMP;
 

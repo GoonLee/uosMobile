@@ -7,7 +7,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.uosmobile.team1.R;
 import com.uosmobile.team1.common.Constant;
 import com.uosmobile.team1.common.DBHelper;
-import com.uosmobile.team1.common.MetaAndCachedDBManager;
+import com.uosmobile.team1.common.PageInfoDBManager;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -53,7 +53,7 @@ public class BookContentsActivity extends AppCompatActivity implements DrawingFr
             }
         });
 
-        MetaAndCachedDBManager manager = new MetaAndCachedDBManager(new DBHelper(this, Constant.NAME_DB, null, Constant.VERSION_DB));
+        PageInfoDBManager manager = new PageInfoDBManager(new DBHelper(this, Constant.NAME_DB, null, Constant.VERSION_DB));
         manager.insertDataIfNotExists(bookTitle, getTotalPageFromFile(bookTitle));
 
         textFragment.setArguments(fragmentArgument);

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.uosmobile.team1.R;
 import com.uosmobile.team1.common.Constant;
 import com.uosmobile.team1.common.DBHelper;
-import com.uosmobile.team1.common.MetaAndCachedDBManager;
+import com.uosmobile.team1.common.PageInfoDBManager;
 import com.uosmobile.team1.quiz.QuizActivity;
 import com.uosmobile.team1.stamp.StampService;
 
@@ -30,14 +30,14 @@ public class TextFragment extends Fragment {
     String bookTitle;
     boolean pageMoved;
     MediaPlayer mediaPlayer;
-    MetaAndCachedDBManager manager;
+    PageInfoDBManager manager;
     StampService stampService;
     TextFragmentResultListener fragmentResultListener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        manager = new MetaAndCachedDBManager(new DBHelper(context, Constant.NAME_DB, null, Constant.VERSION_DB));
+        manager = new PageInfoDBManager(new DBHelper(context, Constant.NAME_DB, null, Constant.VERSION_DB));
         stampService = new StampService(context);
         if(context instanceof DrawingFragment.DrawingFragmentResultListener){
             fragmentResultListener = (TextFragmentResultListener) context;
