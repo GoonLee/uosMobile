@@ -7,6 +7,7 @@ public class Constant {
     public static final String NAME_DIRECTORY_TEXT = "text";
     public static final String NAME_DIRECTORY_SOUND = "sound";
     public static final String NAME_DIRECTORY_IMAGE = "image";
+    public static final String NAME_DIRECTORY_QUIZ = "quiz";
 
     public static final String NAME_DB = "uosmobile.db";
 
