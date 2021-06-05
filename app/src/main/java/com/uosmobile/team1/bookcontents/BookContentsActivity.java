@@ -1,6 +1,8 @@
 package com.uosmobile.team1.bookcontents;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.uosmobile.team1.R;
@@ -42,13 +44,10 @@ public class BookContentsActivity extends AppCompatActivity implements DrawingFr
                 }
             }
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onTabUnselected(TabLayout.Tab tab) {            }
 
-            }
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) {            }
         });
 
         MetaAndCachedDBManager manager = new MetaAndCachedDBManager(new DBHelper(this, Constant.NAME_DB, null, 1));
@@ -76,6 +75,7 @@ public class BookContentsActivity extends AppCompatActivity implements DrawingFr
                 return pathname.getName().toLowerCase(Locale.US).endsWith(".txt");
             }
         });
+        Log.d("DEBUGTAG", "files.length: "+files.length);
         return files != null? files.length : 0;
     }
 }

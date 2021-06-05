@@ -1,13 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/google_pixe"
+    >
 
-    <TextView
-            android:text="PlaceHolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView2" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:longClickable="false"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="2dp"
+        >
+        <TextView
+            android:id="@+id/quizTitleTextView"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="QUIZ"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/ContentsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/quizQuestion"
+            android:layout_margin="20dp"
+            android:text="퀴즈 문제"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioGroup
+            android:id="@+id/quizRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            >
+
+            <RadioButton
+                android:id="@+id/quizRadioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="question1"
+                android:textSize="25dp"
+                android:background="#5B3E96"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                />
+
+            <RadioButton
+                android:id="@+id/quizRadioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="question2"
+                android:textSize="25dp"
+                android:background="#5B3E96"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                />
+
+            <RadioButton
+                android:id="@+id/quizRadioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="question3"
+                android:textSize="25dp"
+                android:background="#5B3E96"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                />
+
+            <RadioButton
+                android:id="@+id/quizRadioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="question4"
+                android:textSize="25dp"
+                android:background="#5B3E96"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</LinearLayout>

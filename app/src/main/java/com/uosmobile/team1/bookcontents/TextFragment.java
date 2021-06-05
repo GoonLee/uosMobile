@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class TextFragment extends Fragment {
             page = manager.getLastPageFromDB(bookTitle);
         }
         int contentsTotalPage = manager.getTotalPageFromDB(bookTitle);
+        Log.d("DEBUGTAG", "contentsTotalPage: "+contentsTotalPage);
 
         TextView contentsTextTextView = v.findViewById(R.id.ContentsTextTextView);
 
@@ -108,6 +110,9 @@ public class TextFragment extends Fragment {
         else if(page == contentsTotalPage){
             contentsTextNextButton.setVisibility(View.INVISIBLE);
             goToQuizButton.setVisibility(View.VISIBLE);
+
+            //DB 스탬프 업데이트
+            manager.updateStampGivenByComplete(bookTitle);
         }
 
         contentsTextTextView.setText(getTextFromFile(page));
