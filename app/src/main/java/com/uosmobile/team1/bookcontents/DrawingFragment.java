@@ -31,7 +31,7 @@ public class DrawingFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        manager = new ImageDBManager(new DBHelper(context, Constant.NAME_DB, null, 1));
+        manager = new ImageDBManager(new DBHelper(context, Constant.NAME_DB, null, Constant.VERSION_DB));
         if(context instanceof DrawingFragmentResultListener){
             fragmentResultListener = (DrawingFragmentResultListener) context;
         } else{

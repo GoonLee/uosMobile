@@ -10,6 +10,8 @@ public class Constant {
 
     public static final String NAME_DB = "uosmobile.db";
 
+    public static final int VERSION_DB = 1;
+
     public static final String NAME_TABLE_META_AND_CACHED_DATA = "BOOK_META_DATA";
     public static final String NAME_TABLE_IMAGE = "USER_MODIFIED_IMAGE";
 
@@ -23,5 +25,4 @@ public class Constant {
     public static final String NAME_COLUMN_PAGE_OF_IMAGE = "page";
     public static final String NAME_COLUMN_ENCODED_IMAGE_OF_IMAGE = "encoded_image";
     public static final String NAME_COLUMN_BACKGROUND_TOGGLED_OF_IMAGE = "background_toggled";
-
 }
