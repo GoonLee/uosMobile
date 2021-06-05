@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import com.uosmobile.team1.common.Constant;
 import com.uosmobile.team1.common.DBHelper;
 import com.uosmobile.team1.common.MetaAndCachedDBManager;
 import com.uosmobile.team1.quiz.QuizActivity;
+import com.uosmobile.team1.stamp.StampService;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,12 +31,14 @@ public class TextFragment extends Fragment {
     boolean pageMoved;
     MediaPlayer mediaPlayer;
     MetaAndCachedDBManager manager;
+    StampService stampService;
     TextFragmentResultListener fragmentResultListener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         manager = new MetaAndCachedDBManager(new DBHelper(context, Constant.NAME_DB, null, Constant.VERSION_DB));
+        stampService = new StampService(context);
         if(context instanceof DrawingFragment.DrawingFragmentResultListener){
             fragmentResultListener = (TextFragmentResultListener) context;
         } else{
@@ -55,7 +57,6 @@ public class TextFragment extends Fragment {
             page = manager.getLastPageFromDB(bookTitle);
         }
         int contentsTotalPage = manager.getTotalPageFromDB(bookTitle);
-        Log.d("DEBUGTAG", "contentsTotalPage: "+contentsTotalPage);
 
         TextView contentsTextTextView = v.findViewById(R.id.ContentsTextTextView);
 
@@ -97,6 +98,7 @@ public class TextFragment extends Fragment {
                 if(page == contentsTotalPage){
                     contentsTextNextButton.setVisibility(View.INVISIBLE);
                     goToQuizButton.setVisibility(View.VISIBLE);
+                    stampService.addStampIfEligible(bookTitle, StampService.ACHIEVEMENT_READALL);
                 }
                 if(page == 2){
                     contentsTextPrevButton.setVisibility(View.VISIBLE);
@@ -111,9 +113,7 @@ public class TextFragment extends Fragment {
         if(page == contentsTotalPage){
             contentsTextNextButton.setVisibility(View.INVISIBLE);
             goToQuizButton.setVisibility(View.VISIBLE);
-
-            //DB 스탬프 업데이트
-            manager.updateStampGivenByComplete(bookTitle);
+            stampService.addStampIfEligible(bookTitle, StampService.ACHIEVEMENT_READALL);
         }
 
         contentsTextTextView.setText(getTextFromFile(page));
@@ -125,7 +125,7 @@ public class TextFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mediaPlayer.release();
+        if (mediaPlayer != null) mediaPlayer.release();
         fragmentResultListener.onTextFragmentDestroyView(page);
         if(pageMoved) manager.updateLastPageToDB(bookTitle, page);
     }
@@ -152,6 +152,7 @@ public class TextFragment extends Fragment {
 
     private void playSoundTrack(int page){
         try{
+            if(mediaPlayer != null) mediaPlayer.release();
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setDataSource(Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_SOUND + "/" + page + ".mp3");
             mediaPlayer.prepare();

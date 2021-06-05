@@ -1,56 +1,42 @@
 package com.uosmobile.team1.quiz;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.uosmobile.team1.MainActivity;
 import com.uosmobile.team1.R;
 import com.uosmobile.team1.common.Constant;
-import com.uosmobile.team1.common.DBHelper;
-import com.uosmobile.team1.common.MetaAndCachedDBManager;
+import com.uosmobile.team1.stamp.StampService;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Locale;
 
 public class QuizActivity extends AppCompatActivity {
 
     String bookTitle;
     TextView quizTitleTextView, quizQuestion;
-    RadioButton quizRadioButton[];
+    RadioButton[] quizRadioButton;
     RadioGroup quizRadioGroup;
-    int radioButtonId[] = {R.id.quizRadioButton1, R.id.quizRadioButton2, R.id.quizRadioButton3, R.id.quizRadioButton4};
+    int[] radioButtonId = {R.id.quizRadioButton1, R.id.quizRadioButton2, R.id.quizRadioButton3, R.id.quizRadioButton4};
     int answerNum, totalQuizNum, quizNum = 1;
-    MetaAndCachedDBManager manager;
+    StampService stampService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        manager = new MetaAndCachedDBManager(new DBHelper(getApplicationContext(), Constant.NAME_DB, null, 1));
+        stampService = new StampService(this);
 
         //intent로 bookTitle 전달받음
         bookTitle = getIntent().getStringExtra("bookTitle");
@@ -98,7 +84,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private void setQuiz(){
         String quizPath = Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_QUIZ + "/" + quizNum + ".txt";
-        Log.d("TAG", "quizPath: " + quizPath);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(quizPath));
@@ -108,10 +93,8 @@ public class QuizActivity extends AppCompatActivity {
             for(int i=0;i<4;i++){
                 String line = reader.readLine();
                 quizRadioButton[i].setText((i+1)+". "+line);
-                Log.d("TAG", line);
             }
             answerNum = Integer.valueOf(reader.readLine());
-            Log.d("TAG", "answerNum: " + answerNum);
 
             reader.close();
         } catch (Exception e) {
@@ -119,8 +102,7 @@ public class QuizActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "주어진 문제가 모두 끝났습니다!",Toast.LENGTH_SHORT).show();
 
             if(quizNum>1){
-                //DB 스탬프 업데이트
-                manager.updateStampGivenByQuiz(bookTitle);
+                stampService.addStampIfEligible(bookTitle, StampService.ACHIEVEMENT_QUIZ);
             }
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -137,7 +119,6 @@ public class QuizActivity extends AppCompatActivity {
                 return pathname.getName().toLowerCase(Locale.US).endsWith(".txt");
             }
         });
-        Log.d("DEBUGTAG", "files.length: "+files.length);
         return files != null? files.length : 0;
     }
 

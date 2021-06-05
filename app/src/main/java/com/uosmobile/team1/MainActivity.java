@@ -30,15 +30,16 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.goToContents:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, bookListFragment).commit();
+                        break;
                     case R.id.goToStamps:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, stampFragment).commit();
+                        break;
                 }
                 return true;
             }
         });
 
         permissionCheck();
-
         getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, bookListFragment).commit();
     }
 
