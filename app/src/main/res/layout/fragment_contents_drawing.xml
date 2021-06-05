@@ -1,17 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ContentsDrawingFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/testTextView"
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</LinearLayout>
+    <com.uosmobile.team1.bookcontents.PaintView
+            android:id="@+id/paintView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_add_24"
+            android:id="@+id/mainFab"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_baseline_auto_fix_normal_24"
+            android:id="@+id/eraserFab"
+            app:layout_constraintStart_toStartOf="@id/mainFab"
+            app:layout_constraintBottom_toTopOf="@id/mainFab"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_palette_24"
+            android:id="@+id/colorFab"
+            app:layout_constraintBottom_toTopOf="@+id/mainFab"
+            app:layout_constraintStart_toEndOf="@+id/eraserFab"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_baseline_layers_24"
+            android:id="@+id/backgroundFab"
+            app:layout_constraintBottom_toTopOf="@+id/eraserFab"
+            app:layout_constraintStart_toStartOf="@+id/mainFab" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_save"
+            android:id="@+id/saveFab"
+            app:layout_constraintBottom_toTopOf="@+id/colorFab"
+            app:layout_constraintStart_toEndOf="@+id/backgroundFab"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

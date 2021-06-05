@@ -3,9 +3,9 @@
 
     <item
         android:id="@+id/goToContents"
-        android:title="컨텐츠 이동"/>
+        android:title="컨텐츠"/>
     <item
         android:id="@+id/goToStamps"
-        android:title="스탬프 이동"/>
+        android:title="스탬프"/>
 
 </menu>

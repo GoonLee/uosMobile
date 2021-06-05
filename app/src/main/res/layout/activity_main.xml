@@ -1,69 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/google_pixe"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/google_pixe">
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/BookContainer"
-        android:layout_width="285dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="31dp"
-        app:cardCornerRadius="20dp"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/BookList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="#5B3E96"
-            app:tabIndicatorGravity="stretch"
-            app:tabMaxWidth="0dp"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@android:color/white"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="@color/black">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/AllBooks"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="다운가능한 책" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/DownloadedBooks"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="다운된 책" />
-        </com.google.android.material.tabs.TabLayout>
-    </com.google.android.material.card.MaterialCardView>
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/google_pixe"
+                                                   android:layout_width="fill_parent"
+                                                   android:layout_height="fill_parent"
+                                                   android:background="@drawable/google_pixe">
     <FrameLayout
-        android:id="@+id/frame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/mainBottomNavigationView"
-        android:layout_below="@id/BookContainer"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="10dp"></FrameLayout>
+            android:id="@+id/mainframe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/mainBottomNavigationView"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/mainBottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="0dp"
-        android:background="@android:color/background_light"
-        app:menu="@menu/menu_bottom" />
-</RelativeLayout>
+            android:id="@+id/mainBottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
+            app:menu="@menu/menu_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/frame" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

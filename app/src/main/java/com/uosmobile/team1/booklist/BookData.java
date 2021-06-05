@@ -1,4 +1,4 @@
-package com.uosmobile.team1;
+package com.uosmobile.team1.booklist;
 
 public class BookData {
     private String title;
