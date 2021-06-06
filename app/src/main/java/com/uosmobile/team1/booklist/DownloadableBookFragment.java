@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uosmobile.team1.R;
 import java.util.ArrayList;
 
+/**
+ * 다운로드 가능한 책의 리스트를 보여주는 프래그먼트입니다.
+ */
 public class DownloadableBookFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -29,6 +32,10 @@ public class DownloadableBookFragment extends Fragment {
         return view;
     }
 
+    /**
+     * 다운로드 기능을 하는 서버를 따로 구현하지 않고 임의의 데이터를 사용합니다.
+     * @return
+     */
     private ArrayList<BookData> loadDownloadableBooks(){
         ArrayList<BookData> bookDataList = new ArrayList<>();
 
