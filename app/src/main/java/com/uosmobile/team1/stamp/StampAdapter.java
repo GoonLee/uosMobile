@@ -11,6 +11,9 @@ import com.uosmobile.team1.R;
 
 import java.util.ArrayList;
 
+/**
+ * StampFragment에서 사용할 Recyclerview의 Adapter입니다.
+ */
 public class StampAdapter extends RecyclerView.Adapter<StampAdapter.ViewHolder>{
     ArrayList<StampData> stampList;
 

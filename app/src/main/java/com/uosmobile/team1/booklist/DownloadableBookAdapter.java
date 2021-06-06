@@ -12,6 +12,9 @@ import com.uosmobile.team1.R;
 
 import java.util.ArrayList;
 
+/**
+ * DownloadableBookFragment에서 사용할 Recyclerview의 Adapter입니다.
+ */
 public class DownloadableBookAdapter extends RecyclerView.Adapter<DownloadableBookAdapter.ViewHolder> {
     private ArrayList<BookData> bookList;
 
@@ -26,6 +29,7 @@ public class DownloadableBookAdapter extends RecyclerView.Adapter<DownloadableBo
             super(view);
             textView = view.findViewById(R.id.book_title);
 
+            // Recyclerview의 각 아이텥의 onClickListener 세팅
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

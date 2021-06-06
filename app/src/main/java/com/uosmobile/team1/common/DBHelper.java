@@ -9,7 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+/**
+ * SQLite를 사용하기 위해 SQLiteOpenHelper 클래스를 상속한 DBHelper 클래스입니다.
+ */
 public class DBHelper extends SQLiteOpenHelper {
+    // 테이블 생성 쿼리
     private static final String QUERY_CREATE_META_AND_CACHED_DATA_TABLE = "create table if not exists " +
             Constant.NAME_TABLE_PAGE_INFO + "(" +
             Constant.NAME_COLUMN_BOOK_TITLE_OF_PAGE_INFO + " TEXT primary key, " +
@@ -31,6 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Constant.NAME_COLUMN_EARN_DATETIME_OF_STAMP + " DATETIME default (datetime('now', 'localtime')), " +
             "PRIMARY KEY (" + Constant.NAME_COLUMN_BOOK_TITLE_OF_STAMP + ", " + Constant.NAME_COLUMN_ACHIEVEMENT_CODE_OF_STAMP + ") );";
 
+    // 테이블 삭제 쿼리
     private static final String QUERY_DROP_META_AND_CACHED_DATA_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_PAGE_INFO;
     private static final String QUERY_DROP_IMAGE_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_IMAGE;
     private static final String QUERY_DROP_STAMP_TABLE_IF_EXISTS = "drop table if exists " + Constant.NAME_TABLE_STAMP;

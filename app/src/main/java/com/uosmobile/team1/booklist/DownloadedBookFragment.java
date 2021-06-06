@@ -18,6 +18,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+/**
+ * 다운로드 된 책의 리스트를 보여주는 프래그먼트입니다.
+ */
 public class DownloadedBookFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -34,6 +37,10 @@ public class DownloadedBookFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Contents 폴더의 책들을 읽어 ArrayList로 반환합니다.
+     * @return Contents 폴더 내의 책들의 제목을 담고 있는 객체의 ArrayList를 반환합니다.
+     */
     private ArrayList<BookData> loadDownloadedBooks(){
         ArrayList<BookData> bookDataList = new ArrayList<>();
         try{

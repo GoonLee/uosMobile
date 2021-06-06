@@ -21,6 +21,9 @@ import java.io.FileFilter;
 import java.io.FileReader;
 import java.util.Locale;
 
+/**
+ * 퀴즈 관련 화면을 보여주는 액티비티입니다.
+ */
 public class QuizActivity extends AppCompatActivity {
 
     String bookTitle;

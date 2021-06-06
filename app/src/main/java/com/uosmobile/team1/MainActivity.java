@@ -12,6 +12,9 @@ import com.uosmobile.team1.booklist.BookListFragment;
 import com.uosmobile.team1.common.PermissionSupport;
 import com.uosmobile.team1.stamp.StampFragment;
 
+/**
+ * 어플리케이션을 실행하면 보여지는 메인 화면 입니다.
+ */
 public class MainActivity extends AppCompatActivity {
     PermissionSupport permission;
 
@@ -43,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, bookListFragment).commit();
     }
 
+    /**
+     * 위험 권한을 사용자가 허용했는지 체크하여 허용하지 않은 경우 허용을 요청합니다.
+     */
     private void permissionCheck(){
         if(Build.VERSION.SDK_INT>=23){
             permission = new PermissionSupport(this, this);

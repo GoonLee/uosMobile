@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.uosmobile.team1.R;
 
+/**
+ * 메인 액티비티에서 스탬프의 리스트를 사용자에게 보여주는 프래그먼트입니다.
+ */
 public class StampFragment extends Fragment {
     StampService stampService;
 
@@ -25,8 +28,6 @@ public class StampFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stamp, container, false);
-
-        System.out.println("OCV called");
 
         stampService = new StampService(getContext());
 

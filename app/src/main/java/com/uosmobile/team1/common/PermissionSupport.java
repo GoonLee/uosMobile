@@ -12,6 +12,9 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 위험 권환 획득을 지원하는 클래스입니다.
+ */
 public class PermissionSupport {
     private Context context;
     private Activity activity;
