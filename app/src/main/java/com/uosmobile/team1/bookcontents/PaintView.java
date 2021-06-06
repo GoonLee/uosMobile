@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -69,7 +70,13 @@ public class PaintView extends View {
         backgroundCanvas.setBitmap(backgroundImg);
         // 프래그먼트로 부터 전달된 배경 활성화 여부에 따라 배경 이미지 또는 흰 바탕 사용
         if(backgroundToggled){
-            backgroundCanvas.drawBitmap(backgroundImageBitmap,null, new Rect(0,0,this.getWidth(), getHeight()),null);
+            if (backgroundImageBitmap == null){
+                Toast.makeText(getContext(), "해당 페이지는 이미지가 없는 페이지입니다.", Toast.LENGTH_SHORT).show();
+                backgroundCanvas.drawColor(Color.WHITE);
+            }
+            else{
+                backgroundCanvas.drawBitmap(backgroundImageBitmap,null, new Rect(0,0,this.getWidth(), getHeight()),null);
+            }
         }
         else{
             backgroundCanvas.drawColor(Color.WHITE);
@@ -233,7 +240,12 @@ public class PaintView extends View {
             backgroundCanvas.drawColor(Color.WHITE);
         }
         else{
-            backgroundCanvas.drawBitmap(backgroundImageBitmap,null, new Rect(0,0,this.getWidth(), getHeight()),null);
+            if (backgroundImageBitmap == null){
+                Toast.makeText(getContext(), "해당 페이지는 이미지가 없는 페이지입니다.", Toast.LENGTH_SHORT).show();
+                backgroundCanvas.drawColor(Color.WHITE);
+            } else {
+                backgroundCanvas.drawBitmap(backgroundImageBitmap, null, new Rect(0, 0, this.getWidth(), getHeight()), null);
+            }
         }
         backgroundToggled = !backgroundToggled;
     }
