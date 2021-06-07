@@ -159,7 +159,7 @@ public class TextFragment extends Fragment {
      */
     private String getTextFromFile(int page){
         try {
-            FileInputStream inFs = new FileInputStream(Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_TEXT + "/" + page + ".txt");
+            FileInputStream inFs = new FileInputStream(getContext().getFilesDir().getPath() + "/Contents" + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_TEXT + "/" + page + ".txt");
             byte[] txt = new byte[inFs.available()];
             inFs.read(txt);
             inFs.close();
@@ -179,7 +179,7 @@ public class TextFragment extends Fragment {
         try{
             if(mediaPlayer != null) mediaPlayer.release();
             mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_SOUND + "/" + page + ".mp3");
+            mediaPlayer.setDataSource(getContext().getFilesDir().getPath() + "/Contents" + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_SOUND + "/" + page + ".mp3");
             mediaPlayer.prepare();
             mediaPlayer.start();
         } catch(FileNotFoundException ignored){

@@ -101,7 +101,7 @@ public class BookContentsActivity extends AppCompatActivity implements DrawingFr
      * @return 해당 책의 텍스트 파일 수를 리턴합니다.
      */
     private int getTotalPageFromFile(String bookTitle){
-        File f = new File(Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_TEXT);
+        File f = new File(this.getFilesDir().getPath() + "/Contents" + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_TEXT);
         File[] files = f.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {

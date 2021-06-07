@@ -86,7 +86,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void setQuiz(){
-        String quizPath = Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_QUIZ + "/" + quizNum + ".txt";
+        String quizPath = this.getFilesDir().getPath() + "/Contents" + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_QUIZ + "/" + quizNum + ".txt";
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(quizPath));
@@ -115,7 +115,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private int getTotalQuizNumFromFile(String bookTitle){
-        File f = new File(Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_QUIZ);
+        File f = new File(this.getFilesDir().getPath() + "/Contents" + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_QUIZ);
         File[] files = f.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
