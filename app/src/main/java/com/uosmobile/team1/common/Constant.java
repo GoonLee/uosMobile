@@ -1,13 +1,10 @@
 package com.uosmobile.team1.common;
 
-import android.os.Environment;
-
 /**
  * 프로그램에서 자주 사용되는 상수들을 정의한 클래스입니다.
  */
 public class Constant {
     // 파일 읽고 쓰기 관련 상수
-    public static final String NAME_CONTENTS_ABSOLUTE_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/Contents";
     public static final String NAME_DIRECTORY_TEXT = "text";
     public static final String NAME_DIRECTORY_SOUND = "sound";
     public static final String NAME_DIRECTORY_IMAGE = "image";

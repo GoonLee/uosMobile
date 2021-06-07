@@ -174,7 +174,7 @@ public class DrawingFragment extends Fragment {
         자세한 사항은 프래그먼트 생명주기와 custom view 생성 실행 흐름 확인
          */
         paintView.setPaintViewStatus(manager.getPaintViewInfoOrNullFromDB(bookTitle, page));
-        paintView.setBackgroundImage(BitmapFactory.decodeFile(Constant.NAME_CONTENTS_ABSOLUTE_PATH + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_IMAGE + "/" + page + ".bmp"));
+        paintView.setBackgroundImage(BitmapFactory.decodeFile(getContext().getFilesDir().getPath() + "/Contents" + "/" + bookTitle + "/" + Constant.NAME_DIRECTORY_IMAGE + "/" + page + ".bmp"));
     }
 
     @Override

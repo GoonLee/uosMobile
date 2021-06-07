@@ -44,7 +44,7 @@ public class DownloadedBookFragment extends Fragment {
     private ArrayList<BookData> loadDownloadedBooks(){
         ArrayList<BookData> bookDataList = new ArrayList<>();
         try{
-            File downloadedContentsDirectory = new File(Constant.NAME_CONTENTS_ABSOLUTE_PATH);
+            File downloadedContentsDirectory = new File(getContext().getFilesDir().getPath() + "/Contents");
             for(File f : downloadedContentsDirectory.listFiles()){
                 bookDataList.add(new BookData(f.getName()));
             }
